@@ -1,0 +1,143 @@
+# Mechanicus Quote Database - Beispielstruktur
+# Hinweis: Diese Datei enthält Platzhalter statt vollständiger Drittanbieter-Volltexte.
+
+- id: MQD-AMQ-000001
+  record_type: quote
+  canonical_text: "<Original quote text from Lexicanum source>"
+  text_variants: []
+  normalized_text: "<normalized search text>"
+  language: en
+  source_page: adeptus_mechanicus_quotes
+  source_page_url: "https://wh40k.lexicanum.com/wiki/Adeptus_Mechanicus_Quotes"
+  lexicanum_section: "Attributed > Texts"
+  lexicanum_anchor: null
+  lexicanum_retrieved_at: "2026-05-28"
+  lexicanum_oldid: "758807"
+  origin:
+    origin_type: text
+    name: "Aphorisms"
+    reference: "56"
+    speaker: null
+    speaker_role: null
+    faction: "Adeptus Mechanicus"
+    forge_world: null
+  publication_source:
+    title: null
+    edition: null
+    page: null
+    chapter: null
+    footnote_ref: "[1]"
+  classification:
+    category: aphorism
+    subcategory: doctrine
+    is_liturgical: false
+    is_prayer: false
+    is_battle_related: false
+    is_machine_spirit_related: false
+    attribution_status: attributed
+    source_quality: lexicanum_cited
+  semantic_tags:
+    - xenos
+    - doctrine
+    - vigilance
+  style_tags:
+    - doctrinal
+    - terse
+    - warning
+  usage:
+    suitable_for:
+      - security_warning
+      - loading_screen
+      - persona_prompt_seed
+    trigger_contexts:
+      - unknown_external_input
+      - threat_detected
+    intensity: 3
+    humour_level: 0
+    persona_fit:
+      techpriest: 5
+      skitarii: 4
+      magos: 4
+  rights:
+    content_origin: third_party_copyrighted
+    use_policy: private_reference_only
+    public_export_allowed: false
+  review:
+    status: needs_human_review
+    reviewer: null
+    reviewed_at: null
+    notes: "Imported concept entry. Primary publication not independently verified."
+    flags:
+      - needs_source_confirmation
+
+- id: MQD-CMRE-000001
+  record_type: litany
+  canonical_text: |
+    <Multi-line litany or religious excerpt text from Lexicanum source>
+  text_variants: []
+  normalized_text: "<normalized search text>"
+  language: en
+  source_page: cult_mechanicus_religious_excerpts
+  source_page_url: "https://wh40k.lexicanum.com/wiki/Cult_Mechanicus_Religious_Excerpts"
+  lexicanum_section: "Text Excerpt Source"
+  lexicanum_anchor: null
+  lexicanum_retrieved_at: "2026-05-28"
+  lexicanum_oldid: "745013"
+  origin:
+    origin_type: religious_text
+    name: "Litany of Praise"
+    reference: null
+    speaker: null
+    speaker_role: null
+    faction: "Cult Mechanicus"
+    forge_world: null
+  publication_source:
+    title: "Codex: Adeptus Mechanicus"
+    edition: "8th Edition"
+    page: "6"
+    chapter: null
+    footnote_ref: null
+  classification:
+    category: litany
+    subcategory: praise
+    is_liturgical: true
+    is_prayer: true
+    is_battle_related: false
+    is_machine_spirit_related: true
+    attribution_status: attributed
+    source_quality: lexicanum_cited
+  semantic_tags:
+    - machine_god
+    - praise
+    - triumph
+    - litany
+  style_tags:
+    - liturgical
+    - chant
+    - solemn
+  usage:
+    suitable_for:
+      - system_boot
+      - deployment_start
+      - dashboard_banner
+      - led_matrix_display
+    trigger_contexts:
+      - agent_startup
+      - mission_start
+    intensity: 4
+    humour_level: 0
+    persona_fit:
+      techpriest: 5
+      magos: 5
+      skitarii: 3
+  rights:
+    content_origin: third_party_copyrighted
+    use_policy: private_reference_only
+    public_export_allowed: false
+  review:
+    status: needs_human_review
+    reviewer: null
+    reviewed_at: null
+    notes: "Preserve line breaks during import."
+    flags:
+      - needs_line_break_review
