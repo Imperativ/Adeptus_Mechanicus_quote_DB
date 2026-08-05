@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.local/mechanicus-quote-db/schema/quote_entry.schema.json",
+  "title": "Mechanicus Quote Entry",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "id",
+    "record_type",
+    "canonical_text",
+    "language",
+    "source_page",
+    "source_page_url",
+    "lexicanum_retrieved_at",
+    "origin",
+    "classification",
+    "semantic_tags",
+    "style_tags",
+    "usage",
+    "review"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^MQD-[A-Z]+-[0-9]{6}$"
+    },
+    "record_type": {
+      "type": "string",
+      "enum": [
+        "quote",
+        "excerpt",
+        "litany",
+        "hymn",
+        "creed",
+        "invocation",
+        "prayer",
+        "chant"
+      ]
+    },
+    "canonical_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "text_variants": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "normalized_text": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string",
+      "enum": ["en", "de", "la", "binharic_unknown"]
+    },
+    "source_page": {
+      "type": "string"
+    },
+    "source_page_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "lexicanum_section": {
+      "type": ["string", "null"]
+    },
+    "lexicanum_anchor": {
+      "type": ["string", "null"]
+    },
+    "lexicanum_retrieved_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "lexicanum_oldid": {
+      "type": ["string", "null"]
+    },
+    "origin": {
+      "type": "object",
+      "required": ["origin_type", "name"],
+      "properties": {
+        "origin_type": { "type": "string" },
+        "name": { "type": ["string", "null"] },
+        "reference": { "type": ["string", "null"] },
+        "speaker": { "type": ["string", "null"] },
+        "speaker_role": { "type": ["string", "null"] },
+        "faction": { "type": ["string", "null"] },
+        "forge_world": { "type": ["string", "null"] }
+      }
+    },
+    "publication_source": {
+      "type": "object",
+      "properties": {
+        "title": { "type": ["string", "null"] },
+        "edition": { "type": ["string", "null"] },
+        "page": { "type": ["string", "null"] },
+        "chapter": { "type": ["string", "null"] },
+        "footnote_ref": { "type": ["string", "null"] }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "required": ["category", "attribution_status", "source_quality"],
+      "properties": {
+        "category": {
+          "type": "string",
+          "enum": [
+            "aphorism",
+            "battle_cry",
+            "catechism",
+            "chant",
+            "creed",
+            "excerpt",
+            "hymn",
+            "invocation",
+            "litany",
+            "mantra",
+            "mourning_rite",
+            "prayer",
+            "prophecy",
+            "technical_rite",
+            "warning",
+            "doctrinal_statement",
+            "character_quote",
+            "unknown_quote"
+          ]
+        },
+        "subcategory": { "type": ["string", "null"] },
+        "is_liturgical": { "type": "boolean" },
+        "is_prayer": { "type": "boolean" },
+        "is_battle_related": { "type": "boolean" },
+        "is_machine_spirit_related": { "type": "boolean" },
+        "attribution_status": {
+          "type": "string",
+          "enum": ["attributed", "unattributed", "unknown", "mixed"]
+        },
+        "source_quality": {
+          "type": "string",
+          "enum": [
+            "verified",
+            "lexicanum_cited",
+            "lexicanum_uncited",
+            "quarantined",
+            "needs_review",
+            "duplicate_candidate"
+          ]
+        }
+      }
+    },
+    "semantic_tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "style_tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "usage": {
+      "type": "object",
+      "required": ["suitable_for", "trigger_contexts"],
+      "properties": {
+        "suitable_for": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "trigger_contexts": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "intensity": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "humour_level": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "persona_fit": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 5
+          }
+        }
+      }
+    },
+    "rights": {
+      "type": "object",
+      "properties": {
+        "content_origin": {
+          "type": "string",
+          "enum": ["third_party_copyrighted", "user_generated", "transformed", "public_domain_unknown"]
+        },
+        "use_policy": {
+          "type": "string"
+        },
+        "public_export_allowed": {
+          "type": "boolean"
+        }
+      }
+    },
+    "review": {
+      "type": "object",
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["draft", "needs_human_review", "reviewed", "rejected", "deprecated"]
+        },
+        "reviewer": { "type": ["string", "null"] },
+        "reviewed_at": { "type": ["string", "null"], "format": "date" },
+        "notes": { "type": ["string", "null"] },
+        "flags": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}
